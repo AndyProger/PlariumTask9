@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace UserSpace
 {
 
-    class User : Person, ICloneable, IComparable<User>
+    class User : Person, ICloneable, IComparable<User>, IDisposable
     {
         [JsonProperty]
         public string ID { get; private set; } = Guid.NewGuid().ToString();
@@ -18,6 +18,8 @@ namespace UserSpace
         public int LettersSent { get; private set; }
         [JsonProperty]
         public int LettersReceived { get => _letters.Count; }
+
+        private bool disposed = false;
 
         /// <summary>
         /// Событие, которое вызывается при отправке письма
@@ -120,5 +122,28 @@ namespace UserSpace
         }
 
         public int CompareTo(User other) => Surname.CompareTo(other.Surname);
+
+        public void Dispose()
+        {
+            CleanUp(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void CleanUp(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    foreach (Delegate d in LetterSent.GetInvocationList())
+                    {
+                        LetterSent -= (SendLetterHandler)d;
+                    }
+                }
+            }
+            disposed = true;
+        }
+
+        ~User() => CleanUp(false);
     }
 }
