@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlariumTask9", "PlariumTask9\PlariumTask9.csproj", "{C37CDE02-1509-477D-B5ED-B4D81ADA4254}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C37CDE02-1509-477D-B5ED-B4D81ADA4254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C37CDE02-1509-477D-B5ED-B4D81ADA4254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C37CDE02-1509-477D-B5ED-B4D81ADA4254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C37CDE02-1509-477D-B5ED-B4D81ADA4254}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3BDA819-AA41-469A-AEDE-D727D760C2F3}
+	EndGlobalSection
+EndGlobal
