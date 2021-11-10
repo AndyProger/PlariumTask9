@@ -92,7 +92,7 @@ namespace CollectionOfUsers
         /// </summary>
         /// <param name="result"> Результат </param>
         /// <param name="comment"> Комментарий к результату (необязательный) </param>
-        public static void WriteToFileResult(string result, string comment)
+        public static void WriteToFileResult(string result, string comment = null)
         {
             using (StreamWriter sw = new StreamWriter("Results.txt", true))
             {
