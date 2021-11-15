@@ -94,7 +94,6 @@ namespace CollectionOfUsers
                 using (StreamWriter sw = File.AppendText("MultiThreadWritingResult.txt"))
                 {
                     sw.WriteLine(text + new string('*',40));
-                    sw.Close();
                 }
             }
             finally
