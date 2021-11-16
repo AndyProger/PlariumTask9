@@ -65,29 +65,18 @@ namespace CollectionOfUsers
         /// </summary>
         public static void MultithreadWritingToFiles()
         {
-            Thread[] threads = new Thread[4];
-            
-            for(var i = 0; i < threads.Length; i++)
-            {
-                threads[i] = new Thread(new ParameterizedThreadStart(WriteToFileThreadSafe));
-            }
-
-            // многопоточная запись в файл
-            threads[0].Start(GetUsersInfo());
-            threads[1].Start(GetUsersWithSuchTopic("Work"));
-            threads[2].Start(GetUsersWithoutSuchTopic("Study"));
-            threads[3].Start(FindUserWithTheShortesLetter());
+            new Thread(() => WriteToFileThreadSafe(GetUsersInfo())).Start();
+            new Thread(() => WriteToFileThreadSafe(GetUsersWithSuchTopic("Work"))).Start();
+            new Thread(() => WriteToFileThreadSafe(GetUsersWithoutSuchTopic("Study"))).Start();
+            new Thread(() => WriteToFileThreadSafe(FindUserWithTheShortesLetter().ToString())).Start();
         }
 
         /// <summary>
         /// Метод для безопасной записи в файл из разных потоков
         /// </summary>
         /// <param name="str"> Строка для записи в файл </param>
-        private static void WriteToFileThreadSafe(object str)
+        private static void WriteToFileThreadSafe(string text)
         {
-            // Можно не бояться NullReferenceException, т.к. ToString метод в object
-            string text = str.ToString();
-
             _readWriteLock.EnterWriteLock();
             try
             {
